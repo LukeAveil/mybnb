@@ -7,7 +7,7 @@ class Space
 
   property :id, Serial
   property :name, String
-  property :description, String
+  property :description, String, length: 500
   property :price, String
 
 end

@@ -7,7 +7,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
 
-require './lib/models/space'
+
 
 Capybara.app = MakersBnB
 RSpec.configure do |config|
