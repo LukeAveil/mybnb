@@ -3,6 +3,7 @@ require 'dm-postgres-adapter'
 require 'dm-timestamps'
 
 require_relative 'models/user.rb'
+require_relative 'models/space'
 
 DataMapper.setup(
   :default, ENV['DATABASE_URL'] ||
