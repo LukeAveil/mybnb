@@ -5,6 +5,9 @@ require File.join(File.dirname(__FILE__), '..', 'lib/app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require 'database_cleaner'
+
+require './lib/models/space'
 
 Capybara.app = MakersBnB
 RSpec.configure do |config|
@@ -17,21 +20,18 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.filter_run :focus
-  config.run_all_when_everything_filtered = true
-
-  config.disable_monkey_patching!
-
-  config.warnings = true
-
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.profile_examples = 10
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
 
-  config.order = :random
 
-  Kernel.srand config.seed
-=end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 end
