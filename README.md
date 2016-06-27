@@ -9,6 +9,10 @@ As a signed-up user
 so that I can make money
 I would like to list a space
 
+As a signed up user
+so that i can use the site
+I would like to log in 
+
 As a user
 so that I can list all my spaces
 I would like to list multiple spaces
