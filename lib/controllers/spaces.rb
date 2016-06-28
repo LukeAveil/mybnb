@@ -30,6 +30,10 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     setSpace
+    @available_dates = @space.available_dates.map { |d| d.date }
+
+    calendar = Calendar.new(@available_dates.last.year, @available_dates.last.month)
+    @date_list = calendar.list_dates
     erb :'spaces/view'
   end
 

@@ -1,0 +1,7 @@
+<% @requests.each do |request| %>
+  <p>
+    <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
+    <%= get_request_status(request.confirmed) %><br>
+    <%= request.date %>
+  </p>
+<% end %>
