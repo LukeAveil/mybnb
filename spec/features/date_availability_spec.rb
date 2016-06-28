@@ -13,7 +13,6 @@ feature 'Specify availability' do
     signup
     listSpace
     click_link 'view space'
-    expect(current_path).to eq '/spaces/view'
     fill_in 'date', with: '2016-07-16'
     click_button('add availability')
     space = Space.first
