@@ -17,7 +17,7 @@ def signin(email: "joe@joemail.com",
 end
 
 def listSpace
-  visit '/spaces/new'
+  visit '/listSpace'
   fill_in 'name', with: "Luke's place"
   fill_in 'description', with: 'Nice place in Shoreditch'
   fill_in 'price', with: '200'
