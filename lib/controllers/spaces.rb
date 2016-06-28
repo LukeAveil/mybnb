@@ -18,4 +18,10 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
 
+  get '/spaces/:id' do
+    calendar = Calendar.new(2016, 9, ["2016-09-12"])
+    @date_list = calendar.list_dates
+    erb :'spaces/space'
+  end
+
 end
