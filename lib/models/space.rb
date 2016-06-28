@@ -10,4 +10,5 @@ class Space
   property :description, String, length: 500
   property :price, String
 
+  belongs_to :user
 end
