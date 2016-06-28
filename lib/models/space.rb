@@ -11,4 +11,6 @@ class Space
   property :price, String
 
   belongs_to :user
+
+  has n, :dates, through: Resource
 end
