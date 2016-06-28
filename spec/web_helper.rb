@@ -15,3 +15,12 @@ def signin(email: "joe@joemail.com",
   fill_in :password, with: password
   click_button "log in"
 end
+
+def listSpace
+  visit '/listSpace'
+  fill_in 'name', with: "Luke's place"
+  fill_in 'description', with: 'Nice place in Shoreditch'
+  fill_in 'price', with: '200'
+  fill_in 'date', with: '2016-08-16'
+  click_button('List space')
+end

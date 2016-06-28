@@ -1,20 +1,43 @@
 class MakersBnB < Sinatra::Base
 
+  helpers do
+    def setSpace()
+      @id = request.path_info.split('/').last
+      @space = Space.first(id: @id)
+    end
+  end
+
   get '/spaces' do
     @user = User.first(id: session[:user_id])
     @spaces = Space.all
     erb :'spaces/index'
   end
 
-  get '/spaces/new' do
+  get '/listSpace' do
     erb :'spaces/new'
   end
 
-  post '/spaces' do
-    Space.create(name: params[:name],
+  put '/spaces' do
+    space = Space.new(name: params[:name],
                  price: params[:price],
                  description: params[:description],
                  user: User.first(id: session[:user_id]))
+    date = AvailableDate.create(date: Date.parse(params[:date]))
+    space.available_dates << date
+    space.save
+    redirect '/spaces'
+  end
+
+  get '/spaces/:id' do
+    setSpace
+    erb :'spaces/view'
+  end
+
+  put '/spaces/:id' do
+    setSpace
+    date = AvailableDate.create(date: Date.parse(params[:date]))
+    @space.available_dates << date
+    @space.save
     redirect '/spaces'
   end
 
