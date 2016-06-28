@@ -3,7 +3,10 @@ require 'date'
 class MakersBnB < Sinatra::Base
 
   get '/requests' do
-    @requests = Request.all(user: User.first(id: session[:user_id]))
+    @requests_made = Request.all(user: User.first(id: session[:user_id]))
+    @requests_received = Request.all.select do |request|
+      request.space.id == session[:user_id]
+    end
     erb :'requests/index'
   end
 

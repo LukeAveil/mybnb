@@ -1,7 +1,16 @@
-<% @requests.each do |request| %>
+<% @requests_made.each do |request| %>
   <p>
     <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
     <%= get_request_status(request.confirmed) %><br>
     <%= request.date %>
+  </p>
+<% end %>
+
+<% @requests_received.each do |request| %>
+  <p>
+    <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
+    <%= get_request_status(request.confirmed) %><br>
+    <%= request.date %>
+    <a href="/requests/<%= request.id %>">Approve</a>
   </p>
 <% end %>
