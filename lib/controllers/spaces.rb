@@ -30,6 +30,10 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     setSpace
+    @available_dates = @space.available_dates.map { |d| d.date }
+
+    calendar = Calendar.new(@available_dates.last.year, @available_dates.last.month)
+    @date_list = calendar.list_dates
     erb :'spaces/view'
   end
 
@@ -39,12 +43,6 @@ class MakersBnB < Sinatra::Base
     @space.available_dates << date
     @space.save
     redirect '/spaces'
-  end
-
-  get '/spaces/:id' do
-    calendar = Calendar.new(2016, 9, ["2016-09-12"])
-    @date_list = calendar.list_dates
-    erb :'spaces/space'
   end
 
 end

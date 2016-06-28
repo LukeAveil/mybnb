@@ -5,6 +5,7 @@ require 'dm-timestamps'
 require_relative 'models/user.rb'
 require_relative 'models/space'
 require_relative 'models/available_date'
+require_relative 'models/request'
 
 DataMapper.setup(
   :default, ENV['DATABASE_URL'] ||

@@ -3,7 +3,7 @@ Description:  <%= @space.description %>
 Price:   <%= @space.price   %>
 <br>
 
-<form action="/spaces/<%=@id%>" method ="post">
+<form action="/spaces/<%= @id %>" method ="post">
   <input type='hidden' name='_method' value='put'>
   <label for = "date">
     Available date:
@@ -11,5 +11,24 @@ Price:   <%= @space.price   %>
   </label>
 
   <input type="submit" value="add availability">
+</form>
 
+<% @date_list.each do |date| %>
+	<% if @available_dates.include?(date) %>
+	  <a href="/spaces/<%= params[:id] %>?date=<%= date %>"><%= date %></a>
+    <br>
+	<% else %>
+    <%= date %>
+    <br>
+	<% end %>
+<% end %>
+<br>
+
+<form action="/requests" method="post">
+  <input type='hidden' name='_method' value='put'>
+  <input type='hidden' name='space_id' value='<%= @id %>'>
+  <input type='hidden' name='requested_date' value='<%= params[:date] %>'>
+
+  Requested Date: <input type="text" value="<%= params[:date] %>" disabled="true">
+  <input type="submit" value="confirm request">
 </form>
