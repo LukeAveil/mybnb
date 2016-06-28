@@ -12,5 +12,5 @@ class Space
 
   belongs_to :user
 
-  has n, :dates, through: Resource
+  has n, :available_dates, through: Resource
 end
