@@ -1,0 +1,15 @@
+<h1><%= @space.name %></h1>
+Description:  <%= @space.description %>
+Price:   <%= @space.price   %>
+<br>
+
+<form action="/spaces/addDate?space=<%=@space.id%>" method ="post">
+
+  <label for = "date">
+    Available date:
+    <input type="text" name="date"/>
+  </label>
+
+  <input type="submit" value="add availability">
+
+</form>

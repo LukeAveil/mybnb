@@ -21,4 +21,17 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
 
+  get '/spaces/view' do
+    @space = Space.first(id: params[:space])
+    erb :'spaces/view'
+  end
+
+  post '/spaces/addDate' do
+    space = Space.first(id: params[:space])
+    date = AvailableDate.create(date: Date.parse(params[:date]))
+    space.available_dates << date
+    space.save
+    redirect '/spaces'
+  end
+
 end
