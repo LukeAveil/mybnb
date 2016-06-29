@@ -24,3 +24,16 @@ def listSpace
   fill_in 'date', with: '2016-08-16'
   click_button('List space')
 end
+
+def makeRequest
+  signup
+  listSpace
+  click_button 'sign out'
+  signup(email: 'ken@ken.com')
+  visit '/spaces'
+  click_link "view space"
+  click_link "2016-08-16"
+  click_button "confirm request"
+  signin
+  visit '/requests'
+end

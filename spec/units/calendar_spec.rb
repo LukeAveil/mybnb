@@ -1,6 +1,6 @@
 describe Calendar do
 
-  subject(:calendar) {described_class.new(2016, 9)}
+  subject(:calendar) { described_class.new([Date.parse('2016-09-12')]) }
 
   it 'starts with a year, month, and available days' do
     expect(subject.year).to eq 2016
