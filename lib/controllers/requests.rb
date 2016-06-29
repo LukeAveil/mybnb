@@ -3,7 +3,10 @@ require 'date'
 class MakersBnB < Sinatra::Base
 
   get '/requests' do
-    @requests = Request.all(user: User.first(id: session[:user_id]))
+    @requests_made = Request.all(user: User.first(id: session[:user_id]))
+    @requests_received = Request.all.select do |request|
+      request.space.user.id == session[:user_id]
+    end
     erb :'requests/index'
   end
 
@@ -12,6 +15,12 @@ class MakersBnB < Sinatra::Base
                           space: Space.first(id: params[:space_id]),
                           confirmed: 0,
                           date: Date.parse(params[:requested_date]))
+    redirect '/requests'
+  end
+
+  put '/requests/:id' do
+    request = Request.first(id: params[:id])
+    request.update(confirmed: 2);
     redirect '/requests'
   end
 

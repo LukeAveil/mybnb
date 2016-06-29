@@ -3,7 +3,7 @@ Description:  <%= @space.description %>
 Price:   <%= @space.price   %>
 <br>
 
-<form action="/spaces/<%= @id %>" method ="post">
+<form action="/spaces/<%= params[:id] %>" method ="post">
   <input type='hidden' name='_method' value='put'>
   <label for = "date">
     Available date:
@@ -26,7 +26,7 @@ Price:   <%= @space.price   %>
 
 <form action="/requests" method="post">
   <input type='hidden' name='_method' value='put'>
-  <input type='hidden' name='space_id' value='<%= @id %>'>
+  <input type='hidden' name='space_id' value='<%= params[:id] %>'>
   <input type='hidden' name='requested_date' value='<%= params[:date] %>'>
 
   Requested Date: <input type="text" value="<%= params[:date] %>" disabled="true">

@@ -1,12 +1,5 @@
 class MakersBnB < Sinatra::Base
 
-  helpers do
-    def setSpace()
-      @id = request.path_info.split('/').last
-      @space = Space.first(id: @id)
-    end
-  end
-
   get '/spaces' do
     @spaces = Space.all
     erb :'spaces/index'
@@ -28,7 +21,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/:id' do
-    setSpace
+    @space = Space.first(id: params[:id])
     @available_dates = @space.available_dates.map { |d| d.date }
 
     calendar = Calendar.new(@available_dates.last.year, @available_dates.last.month)
@@ -37,7 +30,7 @@ class MakersBnB < Sinatra::Base
   end
 
   put '/spaces/:id' do
-    setSpace
+    @space = Space.first(id: params[:id])
     date = AvailableDate.create(date: Date.parse(params[:date]))
     @space.available_dates << date
     @space.save
