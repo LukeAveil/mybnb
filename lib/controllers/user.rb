@@ -1,7 +1,11 @@
 class MakersBnB < Sinatra::Base
 
   get '/' do
-    erb :'users/signup'
+    if @user
+      redirect '/spaces'
+    else
+      erb :'users/signup'
+    end
   end
 
   post '/users' do
@@ -11,7 +15,7 @@ class MakersBnB < Sinatra::Base
 
     if user.save
       session[:user_id] = user.id
-      "Book a Space"
+      redirect '/spaces'
     else
       flash[:errors] = user.errors.full_messages
       redirect '/'
@@ -32,6 +36,11 @@ class MakersBnB < Sinatra::Base
       flash[:errors] = ["Invalid email or password"]
       redirect '/sessions/new'
     end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    redirect '/'
   end
 
 end
