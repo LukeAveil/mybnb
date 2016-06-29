@@ -11,6 +11,7 @@ group :database do
   gem 'dm-postgres-adapter'
   gem 'bcrypt'
   gem 'database_cleaner'
+  gem 'dm-transactions'
 end
 
 group :test do
