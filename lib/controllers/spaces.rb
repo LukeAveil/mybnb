@@ -11,9 +11,9 @@ class MakersBnB < Sinatra::Base
 
   put '/spaces' do
     space = Space.new(name: params[:name],
-                 price: params[:price],
-                 description: params[:description],
-                 user: User.first(id: session[:user_id]))
+                      price: params[:price],
+                      description: params[:description],
+                      user: User.first(id: session[:user_id]))
     date = AvailableDate.create(date: Date.parse(params[:date]))
     space.available_dates << date
     space.save
@@ -24,7 +24,7 @@ class MakersBnB < Sinatra::Base
     @space = Space.first(id: params[:id])
     @available_dates = @space.available_dates.map { |d| d.date }
 
-    calendar = Calendar.new(@available_dates.last.year, @available_dates.last.month)
+    calendar = Calendar.new(@available_dates)
     @date_list = calendar.list_dates
     erb :'spaces/view'
   end
@@ -34,7 +34,7 @@ class MakersBnB < Sinatra::Base
     date = AvailableDate.create(date: Date.parse(params[:date]))
     @space.available_dates << date
     @space.save
-    redirect '/spaces'
+    redirect "/spaces/#{ params[:id] }"
   end
 
 end

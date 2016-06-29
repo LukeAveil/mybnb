@@ -1,4 +1,4 @@
-feature 'Specify availability' do
+feature 'Date handling' do
 
   scenario 'User can specify available dates' do
     signup
@@ -18,6 +18,30 @@ feature 'Specify availability' do
     space = Space.first
     date = Date.parse('2016-07-16')
     expect(space.available_dates.last.date).to eq(date)
+  end
+
+  scenario 'upon booking, booking date removed from available dates' do
+    makeRequest
+    expect(Space.first.available_dates.first.date).to eq Date.parse('2016-08-16')
+    click_button "Approve"
+    expect(Space.first.available_dates).to be_empty
+  end
+
+  scenario 'upon approval, other requests for that space and date are rejected' do
+    makeRequest
+    click_button "sign out"
+    signup(email: 'jeff@jeff.com')
+    visit '/spaces'
+    click_link "view space"
+    click_link "2016-08-16"
+    click_button "confirm request"
+    click_button "sign out"
+    signin
+    visit '/requests'
+    within 'section#request_2' do
+      click_button 'Approve'
+    end
+    expect(Request.last.confirmed).to eq 1
   end
 
 end

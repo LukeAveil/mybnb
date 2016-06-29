@@ -8,7 +8,7 @@
 <% end %>
 
 <% @requests_received.each do |request| %>
-  <p>
+  <section id="request_<%=request.id%>">
     <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
     <%= get_request_status(request.confirmed) %><br>
     <%= request.date %>
@@ -16,5 +16,5 @@
       <input type='hidden' name='_method' value='put'>
         	<input type="submit" value="Approve">
     </form>
-  </p>
+  </section>
 <% end %>

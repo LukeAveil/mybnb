@@ -4,9 +4,10 @@ class Calendar
 
   attr_reader :year, :month
 
-  def initialize(year, month)
-    @year = year
-    @month = month
+  def initialize(dates)
+    dates.push(Date.today) if dates.empty?
+    @year = dates.last.year
+    @month = dates.last.month
   end
 
   def list_dates

@@ -20,7 +20,19 @@ class MakersBnB < Sinatra::Base
 
   put '/requests/:id' do
     request = Request.first(id: params[:id])
-    request.update(confirmed: 2);
+    space = Space.first(id: request.space.id)
+
+    space.available_dates = space.available_dates.select do |av_date|
+      av_date.date != request.date
+    end
+    space.save
+
+    denied_requests = Request.all(space: space)
+    denied_requests = denied_requests.all(date: request.date)
+    denied_requests.update(confirmed: 1)
+
+    request.update(confirmed: 2)
+
     redirect '/requests'
   end
 
