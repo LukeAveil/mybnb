@@ -3,7 +3,6 @@ require 'date'
 class MakersBnB < Sinatra::Base
 
   get '/requests' do
-    @user = User.first(id: session[:user_id]) #REMOVE AFTER FIX
     @requests_made = Request.all(user: User.first(id: session[:user_id]))
     @requests_received = Request.all.select do |request|
       request.space.user.id == session[:user_id]
