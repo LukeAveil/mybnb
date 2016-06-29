@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,200,100,700,900' rel='stylesheet' type='text/css'>    <link rel="stylesheet" href="styles/style.css">
     <title>MakersBnB</title>
   </head>
 
   <body>
-    <% if flash[:errors] %>
-      <% flash[:errors].each do |error| %>
-        <%= error %>
-      <% end %>
-    <% end %>
-    <% if @user %>
-      <%= @user.email %>
-      <form method="post" action="/sessions">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="sign out">
-      </form>
-    <% end %>
-    <%= yield %>
+
+    <div id="main_wrapper">
+      <div id="layoutHeader">
+
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |error| %>
+            <%= error %>
+          <% end %>
+        <% end %>
+
+        <div id="layoutContentWrapper">
+
+          <div id="emailBox">
+            <% if @user %>
+              <span style="color: #459CD5">logged in as: </span><%= @user.email %>
+            <% else %>
+              not logged in
+            <% end %>
+            </div>
+          <% if @user %>
+            <div class="layoutLinkBox">
+              <a href="/spaces" class="layoutLink">Spaces</a>
+            </div>
+            <div class="layoutLinkBox">
+              <a href="/requests" class="layoutLink">Requests</a>
+            </div>
+            <div class="layoutLinkBox">
+              <form method="post" action="/sessions">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Sign Out" class="signOut">
+              </form>
+            </div>
+            <% end %>
+
+        </div>
+
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

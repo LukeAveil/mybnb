@@ -28,7 +28,7 @@ end
 def makeRequest
   signup
   listSpace
-  click_button 'sign out'
+  click_button 'Sign Out'
   signup(email: 'ken@ken.com')
   visit '/spaces'
   click_link "view space"

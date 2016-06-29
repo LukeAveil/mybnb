@@ -29,13 +29,13 @@ feature 'Date handling' do
 
   scenario 'upon approval, other requests for that space and date are rejected' do
     makeRequest
-    click_button "sign out"
+    click_button "Sign Out"
     signup(email: 'jeff@jeff.com')
     visit '/spaces'
     click_link "view space"
     click_link "2016-08-16"
     click_button "confirm request"
-    click_button "sign out"
+    click_button "Sign Out"
     signin
     visit '/requests'
     within 'section#request_2' do

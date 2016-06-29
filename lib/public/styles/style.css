@@ -1,0 +1,217 @@
+body  {
+  background-image: url(/images/background.jpg);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #011F34;
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+h1  {
+  font-weight: normal;
+  font-size: 36px;
+  color: #011F34;
+  margin-top: 0;
+}
+
+#main_wrapper {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100%;
+}
+
+#content  {
+  background-color: #E9F2F8;
+  width: 850px;
+  min-height: 800px; /*remove later */
+  padding: 25px;
+}
+
+#layoutHeader {
+  width: 100%;
+  height: 120px;
+  background-image: url(/images/logo.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  text-align: right;
+}
+
+#layoutContentWrapper {
+  width: 300px;
+  height: 120px;
+  float: right;
+}
+
+#emailBox {
+  height: 27px;
+  width: 100%;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: rgba(71, 218, 255, .3);
+  background-color: rgba(0, 0, 0, .6);
+  font-size: 12px;
+  color: #FFF;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.layoutLinkBox   {
+  width: 90px;
+  margin-left: 10px;
+  height: 30px;
+  float: left;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.layoutLink {
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 300;
+}
+
+.signOut  {
+  background: none;
+  color: #FFF;
+  font-family: 'Lato', sans-serif;
+  border: 0;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.viewSpace  {
+  text-decoration: none;
+  color: #FFF;
+  background-color: #e67e22;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+#spaces {
+  width: 800px;
+  margin: 25px 0px 0px 0px;
+  background-color: #FFF;
+  min-height: 120px;
+  list-style: none;
+  padding: 25px;
+}
+
+#spacesFilter h1  {
+  color: #FFF;
+  font-size: 50px;
+  font-weight: 300;
+  padding: 0 0 6px 0;
+  margin: 0;
+}
+
+#black_section  {
+  background-color: rgba(0, 0, 0, .6);
+  width: 850px;
+  height: 200px;
+  padding: 25px;
+}
+
+#spacesFilter  {
+  width: 525px;
+  height: 150px;
+  float: left;
+  padding: 25px;
+  border-style: solid;
+  border-width: 0 1px 0 0;
+  border-color: rgba(71, 218, 255, .3);
+}
+
+#listSpace  {
+  float: left;
+  height: 100px;
+  width: 200px;
+  padding: 64px 0px 48px 60px;
+}
+
+.listSpaceButton  {
+  width: 160px;
+  height: 33px;
+  background-color: #FFF;
+  padding: 17px 10px 10px 10px;
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  color: #015891;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.listSpaceButton:hover  {
+  background-color: #459CD5;
+  color: #FFF;
+}
+
+.orange {
+  color: #e67e22;
+}
+
+.filter_box {
+  width: 110px;
+  height: 28px;
+  background-color: rgba(69, 156, 213, .6);
+  border: 0px;
+  margin-right: 7px;
+  padding-left: 5px;
+}
+
+.filter_button {
+  width: 110px;
+  height: 28px;
+  background-color: #FFF;
+  border: 0px;
+  margin-right: 7px;
+  padding-left: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.filter_button:hover  {
+  background-color: #e67e22;
+  color: #FFF;
+}
+
+.listall_button {
+  width: 110px;
+  height: 28px;
+  background-color: #FFF;
+  border: 0px;
+  margin-right: 7px;
+  padding-left: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.listall_button:hover  {
+  background-color: #27ae60;
+  color: #FFF;
+}
+
+input::-webkit-input-placeholder {
+   color: #8FC4E6;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+   color: #8FC4E6;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: #8FC4E6;
+}
+
+input:-ms-input-placeholder {
+   color: #8FC4E6;
+}
