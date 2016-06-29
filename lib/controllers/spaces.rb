@@ -8,7 +8,6 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @user = User.first(id: session[:user_id])
     @spaces = Space.all
     erb :'spaces/index'
   end
