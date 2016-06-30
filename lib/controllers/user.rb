@@ -1,11 +1,7 @@
 class MakersBnB < Sinatra::Base
 
   get '/' do
-    if @user
-      redirect '/spaces'
-    else
-      erb :'users/signup'
-    end
+    redirect '/spaces'
   end
 
   post '/users' do

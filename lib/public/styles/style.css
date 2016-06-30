@@ -335,3 +335,19 @@ input::-moz-placeholder {  /* Firefox 19+ */
 input:-ms-input-placeholder {
    color: #8FC4E6;
 }
+
+input.signupBoxes::-webkit-input-placeholder {
+   color: #8FC4E6;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+   color: #8FC4E6;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: #8FC4E6;
+}
+
+input:-ms-input-placeholder {
+   color: #8FC4E6;
+}
