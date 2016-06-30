@@ -33,8 +33,7 @@ class MakersBnB < Sinatra::Base
   put '/spaces/:id' do
     @space = Space.first(id: params[:id])
     if @space.user_id == @user.id
-      existing_bookings = Request.all(space: @space, date: Date.parse(params[:date]), confirmed: 2)
-      if existing_bookings.empty?
+      if Request.date_not_already_booked(@space,params[:date])
         date = AvailableDate.create(date: Date.parse(params[:date]))
         @space.available_dates << date
         @space.save
