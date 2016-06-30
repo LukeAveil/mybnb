@@ -13,7 +13,7 @@ class MakersBnB < Sinatra::Base
     space = Space.new(name: params[:name],
                       price: params[:price],
                       description: params[:description],
-                      user: User.first(id: session[:user_id]))
+                      user: @user)
     date = AvailableDate.create(date: Date.parse(params[:date]))
     space.available_dates << date
     space.save

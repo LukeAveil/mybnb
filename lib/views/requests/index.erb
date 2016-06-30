@@ -12,10 +12,12 @@
       <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
       <%= get_request_status(request.confirmed) %><br>
       <%= request.date %>
-      <form action="/requests/<%= request.id %>" method="POST">
-        <input type='hidden' name='_method' value='put'>
-          	<input type="submit" value="Approve">
-      </form>
+      <% if unconfirmed?(request) %>
+        <form action="/requests/<%= request.id %>" method="POST">
+          <input type='hidden' name='_method' value='put'>
+          <input type="submit" value="Approve">
+        </form>
+      <% end %>
     </section>
   <% end %>
 </div>

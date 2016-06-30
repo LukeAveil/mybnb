@@ -3,38 +3,31 @@ require 'date'
 class MakersBnB < Sinatra::Base
 
   get '/requests' do
-    @requests_made = Request.all(user: User.first(id: session[:user_id]))
-    @requests_received = Request.all.select do |request|
-      request.space.user.id == session[:user_id]
-    end
+    @requests_made = Request.all(user: @user)
+    @requests_received = Request.owner(@user)
     erb :'requests/index'
   end
 
   post '/requests' do
     @space = Space.first(id: params[:space_id])
     if Request.date_valid(@space.available_dates, Date.parse(params[:requested_date]))
-      request = Request.create(user: User.first(id: session[:user_id]),
-                            space: @space,
-                            confirmed: 0,
-                            date: Date.parse(params[:requested_date]))
+      request = Request.create(user: @user,
+                               space: @space,
+                               confirmed: 0,
+                               date: Date.parse(params[:requested_date]))
     end
     redirect '/requests'
   end
 
   put '/requests/:id' do
     request = Request.first(id: params[:id])
-    space = Space.first(id: request.space.id)
+    space = request.space
 
-    space.available_dates = space.available_dates.select do |av_date|
-      av_date.date != request.date
+    if Request.unconfirmed_requests_for?(space)
+      space.confirm_booking_on(request.date)
+      Request.reject_requests(space: space, date: request.date)
+      request.confirm
     end
-    space.save
-
-    denied_requests = Request.all(space: space)
-    denied_requests = denied_requests.all(date: request.date)
-    denied_requests.update(confirmed: 1)
-
-    request.update(confirmed: 2)
 
     redirect '/requests'
   end
@@ -42,11 +35,15 @@ class MakersBnB < Sinatra::Base
   helpers do
     def get_request_status(number)
       messages = {
-        '0' => 'Not confirmed',
-        '1' => 'Rejected',
-        '2' => 'Confirmed'
+        0 => 'Not confirmed',
+        1 => 'Rejected',
+        2 => 'Confirmed'
       }
-      messages[number.to_s]
+      messages[number]
+    end
+
+    def unconfirmed?(request)
+      request.confirmed == 0
     end
   end
 
