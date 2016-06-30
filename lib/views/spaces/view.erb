@@ -12,7 +12,7 @@
 
   <br>
 
-  <% if @space.user.id == @user.id %>
+  <% if @user && @space.user.id == @user.id %>
     <form action="/spaces/<%= params[:id] %>" method ="post">
       <input type='hidden' name='_method' value='put'>
       <label for="date">
