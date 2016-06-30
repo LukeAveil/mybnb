@@ -22,11 +22,9 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
-    @available_dates = @space.available_dates.map { |d| d.date }
+    @available_dates = Calendar.extract_dates(@space.available_dates)
     @date_list = Calendar.days_for_next_year
-    @disabled_dates = @date_list - @available_dates
-    @disabled_dates = @disabled_dates.map { |d| "\"#{d}\"" }
-    @available_dates = @available_dates.map { |d| "\"#{d}\"" }
+    @disabled_dates = Calendar.invert_dates(@available_dates)
     erb :'spaces/view'
   end
 
@@ -38,6 +36,12 @@ class MakersBnB < Sinatra::Base
       @space.save
     end
     redirect "/spaces/#{ params[:id] }"
+  end
+
+  helpers do
+    def parse_for_js(array)
+      array.map { |d| "\"#{d}\"" }.join(", ")
+    end
   end
 
 end
