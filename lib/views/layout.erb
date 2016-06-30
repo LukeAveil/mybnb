@@ -12,6 +12,47 @@
   </head>
 
   <body>
+    <div id="overlay_back"></div>
+    <div id="login_overlay">
+
+      <h1>Log in to makers<span style="font-weight: 400">bnb</span></h1>
+      <form method="post" action="/sessions/new">
+
+        <label for="email" style="display: none">Email: </label>
+        <input type="email" name="email" id="email" placeholder="email address" class="signupBoxes" required>
+        <br>
+        <label for="password" style="display: none">Password: </label>
+        <input type="password" name="password" id="password" placeholder="password" class="signupBoxes" required>
+        <br>
+        <label for="login" style="display: none">log in </label>
+        <input type="submit" id="login" value="log in" class="signinButton">
+
+      </form>
+    </div>
+
+    <div id="signup_overlay">
+
+      <h1>Sign up to makers<span style="font-weight: 400">bnb</span></h1>
+
+      <form method="post" action="/users">
+
+        <label for="email" style="display: none">Email: </label>
+        <input type="email" name="email" id="email" placeholder="email address" class="signupBoxes" required>
+
+        <label for="password" style="display: none">Password: </label>
+        <input type="password" name="password" id="password" placeholder="password" class="signupBoxes" required>
+
+        <label for="password_confirmation" style="display: none">Password confirmation: </label>
+        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="password confirmation" class="signupBoxes" required>
+
+        <label for="signup" style="display: none">sign up </label>
+        <input type="submit" id="signup" value="sign up" class="signinButton">
+
+      </form>
+
+      </form>
+    </div>
+
 
     <div id="main_wrapper">
       <div id="layoutHeader">
@@ -38,17 +79,29 @@
             </div>
             <div class="layoutLinkBox">
               <div class="hoverHighlightHidden" id="spaces_highlight"></div>
-              <a href="/requests" class="layoutLink">Requests</a>
+              <a href="/requests" class="layoutLink" id="requests">Requests</a>
             </div>
             <div class="layoutLinkBox">
               <div class="hoverHighlightHidden" id="spaces_highlight"></div>
               <form method="post" action="/sessions">
                 <input type="hidden" name="_method" value="delete">
-                <input type="submit" value="Sign Out" class="signOut">
+                <input type="submit" value="Sign out" id="signOut" class="signOut">
               </form>
             </div>
-            <% end %>
-
+          <% else %>
+            <div class="layoutLinkBox" id="spaces_link">
+              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+              <a href="/spaces" class="layoutLink">Spaces</a>
+            </div>
+            <div class="layoutLinkBox">
+              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+              <a href="#" class="layoutLink" id="signup_link">Sign up</a>
+            </div>
+            <div class="layoutLinkBox">
+              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+              <a href="#" class="layoutLink" id="login_link">Log in</a>
+            </div>
+          <% end %>
         </div>
 
       </div>
