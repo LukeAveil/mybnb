@@ -20,6 +20,15 @@ feature 'Date handling' do
     expect(space.available_dates.last.date).to eq(date)
   end
 
+  scenario 'Only a spaces owner can add available dates' do
+    signup
+    listSpace
+    click_button('Sign Out')
+    signup(email: 'jeff@jeff.com')
+    click_link 'view space'
+    expect(page).not_to have_button('add availability')
+  end
+
   scenario 'upon booking, booking date removed from available dates' do
     makeRequest
     expect(Space.first.available_dates.first.date).to eq Date.parse('2016-08-16')

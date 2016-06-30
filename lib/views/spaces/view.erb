@@ -4,16 +4,17 @@
   Description:  <%= @space.description %>
   Price:   <%= @space.price   %>
   <br>
+  <% if @space.user.id == @user.id %>
+    <form action="/spaces/<%= params[:id] %>" method ="post">
+      <input type='hidden' name='_method' value='put'>
+      <label for = "date">
+        Available date:
+        <input type="date" name="date" min="<%= Date.today %>"/>
+      </label>
 
-  <form action="/spaces/<%= params[:id] %>" method ="post">
-    <input type='hidden' name='_method' value='put'>
-    <label for = "date">
-      Available date:
-      <input type="text" name="date"/>
-    </label>
-
-    <input type="submit" value="add availability">
-  </form>
+      <input type="submit" value="add availability">
+    </form>
+  <% end %>
 
   <% @date_list.each do |date| %>
   	<% if @available_dates.include?(date) %>
@@ -27,7 +28,6 @@
   <br>
 
   <form action="/requests" method="post">
-    <input type='hidden' name='_method' value='put'>
     <input type='hidden' name='space_id' value='<%= params[:id] %>'>
     <input type='hidden' name='requested_date' value='<%= params[:date] %>'>
 
