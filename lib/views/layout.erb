@@ -54,15 +54,20 @@
       </form>
     </div>
 
+    <div id="error_message_overlay">
+      <% if flash[:errors] %>
+        <div id="errors" style="display: none">errors</div>
+          <% flash[:errors].each do |error| %>
+            <div id="error_message">
+              <h3><%= error %></h3>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
 
     <div id="main_wrapper">
       <div id="layoutHeader">
 
-        <% if flash[:errors] %>
-          <% flash[:errors].each do |error| %>
-            <%= error %>
-          <% end %>
-        <% end %>
 
         <div id="layoutContentWrapper">
 
