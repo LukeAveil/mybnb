@@ -4,6 +4,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,200,100,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/calendar.css">
+    <link rel="stylesheet" href="/styles/header.css">
 
     <title>MakersBnB</title>
 
@@ -79,17 +80,17 @@
             <% end %>
             </div>
           <% if @user %>
-            <div class="layoutLinkBox" id="spaces_link">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+            <div class="layoutLinkBox" id="spacelink">
+              <div class="hoverHighlightHidden" id="spacelink_hl"></div>
               <a href="/spaces" class="layoutLink">Spaces</a>
             </div>
-            <div class="layoutLinkBox" id="spaces_link">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+            <div class="layoutLinkBox" id="myspacelink">
+              <div class="hoverHighlightHidden" id="myspacelink_hl"></div>
               <a href="/my_spaces" class="layoutLink">My spaces</a>
             </div>
-            <div class="layoutLinkBox">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
-              <a href="/requests" class="layoutLink" id="requests">Requests</a>
+            <div class="layoutLinkBox" id="requestlink">
+              <div class="hoverHighlightHidden" id="requestlink_hl"></div>
+              <a href="/requests" class="layoutLink">Requests</a>
             </div>
             <div class="layoutLinkBox">
               <div class="hoverHighlightHidden" id="spaces_highlight"></div>
