@@ -1,38 +1,84 @@
 <div id="content">
 
   <h1><%= @space.name %></h1>
-  Description:  <%= @space.description %>
-  Price:   <%= @space.price   %>
+  <strong>Description:</strong>  <%= @space.description %><br>
+  <strong>Price:</strong>   <%= @space.price   %>
   <br>
+  <br>
+
+  <h2 id="dp_title"></h2>
+
+  <div id="datepicker"></div>
+
+  <br>
+
   <% if @space.user.id == @user.id %>
     <form action="/spaces/<%= params[:id] %>" method ="post">
       <input type='hidden' name='_method' value='put'>
-      <label for = "date">
+      <label for="date">
         Available date:
-        <input type="date" name="date" min="<%= Date.today %>"/>
+        <input type="date" name="date" id="available_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>" />
       </label>
 
       <input type="submit" value="add availability">
     </form>
+    <script>
+      $(document).ready(function() {
+
+        $.datepicker.setDefaults({
+          dateFormat: 'yy-mm-dd',
+          minDate: '<%= @date_list.first %>',
+          maxDate: '<%= @date_list.last %>',
+          altField: '#available_date'
+        });
+
+        var array = [<%= @available_dates.join(", ") %>]
+
+        $('#datepicker').datepicker({
+            beforeShowDay: function(date) {
+            var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+            return [ array.indexOf(string) == -1 ]
+          }
+        });
+
+        $('#requested_date').val('');
+        $('#dp_title').text('Add availability for property');
+      });
+    </script>
   <% end %>
 
-  <% @date_list.each do |date| %>
-  	<% if @available_dates.include?(date) %>
-  	  <a href="/spaces/<%= params[:id] %>?date=<%= date %>"><%= date %></a>
-      <br>
-  	<% else %>
-      <%= date %>
-      <br>
-  	<% end %>
+  <% if @space.user.id != @user.id %>
+    <div id="request_form">
+      <form action="/requests" method="post">
+        <input type='hidden' name='space_id' value='<%= params[:id] %>'>
+        Requested Date: <input type="date" id="requested_date" name="requested_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>">
+        <input type="submit" value="confirm request">
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+
+        $.datepicker.setDefaults({
+          dateFormat: 'yy-mm-dd',
+          minDate: '<%= @date_list.first %>',
+          maxDate: '<%= @date_list.last %>',
+          altField: '#requested_date'
+        });
+
+        var array = [<%= @disabled_dates.join(", ") %>]
+
+        $('#datepicker').datepicker({
+            beforeShowDay: function(date) {
+            var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+            return [ array.indexOf(string) == -1 ]
+          }
+        });
+
+        $('#requested_date').val('');
+        $('#dp_title').text('Request to stay');
+      });
+    </script>
   <% end %>
-  <br>
-
-  <form action="/requests" method="post">
-    <input type='hidden' name='space_id' value='<%= params[:id] %>'>
-    <input type='hidden' name='requested_date' value='<%= params[:date] %>'>
-
-    Requested Date: <input type="text" value="<%= params[:date] %>" disabled="true">
-    <input type="submit" value="confirm request">
-  </form>
 
 </div>

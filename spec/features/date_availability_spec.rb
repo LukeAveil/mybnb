@@ -42,7 +42,7 @@ feature 'Date handling' do
     signup(email: 'jeff@jeff.com')
     visit '/spaces'
     click_link "view space"
-    click_link "2016-08-16"
+    fill_in :requested_date, with: "16/08/2016"
     click_button "confirm request"
     click_button "Sign Out"
     signin

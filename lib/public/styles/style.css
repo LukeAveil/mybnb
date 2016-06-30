@@ -15,6 +15,13 @@ h1  {
   margin-top: 0;
 }
 
+h2  {
+  font-weight: normal;
+  font-size: 24px;
+  color: #011F34;
+  margin-top: 0;
+}
+
 #main_wrapper {
   width: 900px;
   margin-left: auto;
@@ -231,6 +238,14 @@ h1  {
 .listall_button:hover  {
   background-color: #27ae60;
   color: #FFF;
+}
+
+input[type="date"]::-webkit-input-placeholder{
+    visibility: hidden !important;
+}
+
+input::-webkit-calendar-picker-indicator{
+    display: none;
 }
 
 input::-webkit-input-placeholder {
