@@ -14,7 +14,7 @@ feature "User sign-up" do
 
   scenario "User can't register with duplicate email" do
     signup
-    click_button 'Sign Out'
+    click_button 'Sign out'
     signup
     expect(page).to have_content "This email address is already taken"
     expect(User.count).to eq 1

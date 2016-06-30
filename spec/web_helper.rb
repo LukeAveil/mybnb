@@ -2,18 +2,22 @@ def signup(email: "joe@joemail.com",
            password: "secret",
            password_confirmation: "secret")
   visit '/'
-  fill_in :email, with: email
-  fill_in :password, with: password
-  fill_in :password_confirmation, with: password_confirmation
-  click_button "sign up"
+  within('#signup_overlay') do
+    fill_in :email, with: email
+    fill_in :password, with: password
+    fill_in :password_confirmation, with: password_confirmation
+    click_button "sign up"
+  end
 end
 
 def signin(email: "joe@joemail.com",
            password: "secret")
-  visit "/sessions/new"
-  fill_in :email, with: email
-  fill_in :password, with: password
-  click_button "log in"
+  visit "/"
+  within('#login_overlay') do
+    fill_in :email, with: email
+    fill_in :password, with: password
+    click_button "log in"
+  end
 end
 
 def listSpace
@@ -28,12 +32,13 @@ end
 def makeRequest
   signup
   listSpace
-  click_button 'Sign Out'
+  click_button 'Sign out'
   signup(email: 'ken@ken.com')
   visit '/spaces'
   click_link "view space"
   fill_in :requested_date, with: "16/08/2016"
   click_button "confirm request"
+  click_button('Sign out')
   signin
   visit '/requests'
 end

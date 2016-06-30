@@ -22,6 +22,94 @@ h2  {
   margin-top: 0;
 }
 
+#login_overlay  {
+  position : absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width    : 380px;
+  height   : 260px;
+  z-index  : 10;
+  display  : none;
+  background-color: #FFF;
+  text-align: center;
+  padding: 10px;
+}
+
+#signup_overlay  {
+  position : absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width    : 380px;
+  height   : 300px;
+  z-index  : 10;
+  display  : none;
+  background-color: #FFF;
+  text-align: center;
+  padding: 10px;
+}
+
+#login_overlay h1 {
+  font-weight: 300;
+  color: #459CD5;
+}
+
+#signup_overlay h1 {
+  font-weight: 300;
+  color: #459CD5;
+}
+
+#overlay_back {
+  position   : absolute;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 100%;
+  background : #000;
+  opacity    : 0.6;
+  filter     : alpha(opacity=60);
+  z-index    : 5;
+  display    : none;
+}
+
+.signupBoxes  {
+  width: 270px;
+  height: 40px;
+  background-color: #E5F6FB;
+  border: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  padding-left: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #011F34
+}
+
+.signinButton  {
+  width: 280px;
+  height: 40px;
+  background-color: #F39C12;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #FFF;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin-left: -4px;
+}
+
+.signinButton:hover  {
+  background-color: #e67e22;
+>>>>>>> master
+}
+
 #main_wrapper {
   width: 900px;
   margin-left: auto;
@@ -249,6 +337,22 @@ input::-webkit-calendar-picker-indicator{
 }
 
 input::-webkit-input-placeholder {
+   color: #8FC4E6;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+   color: #8FC4E6;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: #8FC4E6;
+}
+
+input:-ms-input-placeholder {
+   color: #8FC4E6;
+}
+
+input.signupBoxes::-webkit-input-placeholder {
    color: #8FC4E6;
 }
 

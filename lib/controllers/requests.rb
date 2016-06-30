@@ -11,9 +11,10 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/requests' do
-    if Date.parse(params[:requested_date]) >= Date.today
+    @space = Space.first(id: params[:space_id])
+    if Request.date_valid(@space.available_dates, Date.parse(params[:requested_date]))
       request = Request.create(user: User.first(id: session[:user_id]),
-                            space: Space.first(id: params[:space_id]),
+                            space: @space,
                             confirmed: 0,
                             date: Date.parse(params[:requested_date]))
     end
