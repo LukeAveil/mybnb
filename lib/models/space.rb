@@ -18,8 +18,12 @@ class Space
     self.available_dates = self.available_dates.select do |av_date|
       av_date.date != date
     end
-    
+
     self.save
+  end
+
+  def in_range?(from, to)
+    available_dates.any? { |dateObj| (dateObj.date >= from && dateObj.date <= to) }
   end
 
 end

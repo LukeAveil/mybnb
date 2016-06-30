@@ -2,11 +2,13 @@
   <div id="spacesFilter">
     <h1>Spaces</h1>
     <div style="height:5px; width: 100%"></div>
-    <form>
-      <input type="text" class="filter_box" placeholder="from">
-      <input type="text" class="filter_box" placeholder="to">
+    <form style="display: inline">
+      <input type="date" class="filter_box" placeholder="from" name="from" style="font-size:12px" required>
+      <input type="date" class="filter_box" placeholder="to" name="to" style="font-size:12px" required>
       <input type="submit" class="filter_button" value="filter">
-      <input type="submit" class="listall_button" value="list all">
+    </form>
+    <form style="display: inline">
+    <input type="submit" class="listall_button" value="list all">
     </form>
   </div>
   <div id="listSpace">
