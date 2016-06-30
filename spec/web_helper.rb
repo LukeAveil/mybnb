@@ -42,3 +42,15 @@ def makeRequest
   signin
   visit '/requests'
 end
+
+def listanotherSpace
+  click_button('Sign out')
+  signup(email: 'ken@ken.com')
+  visit '/listSpace'
+  fill_in 'name', with: "Ken's place"
+  fill_in 'description', with: 'Nice place in Holborn'
+  fill_in 'price', with: '150'
+  fill_in 'date', with: '2016-08-08'
+  click_button('List space')
+  click_button('Sign out')
+end

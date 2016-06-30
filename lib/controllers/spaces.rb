@@ -5,6 +5,12 @@ class MakersBnB < Sinatra::Base
     erb :'spaces/index'
   end
 
+  get '/my_spaces' do
+    @spaces = Space.all(user: @user)
+    erb :'spaces/index'
+  end
+
+
   get '/listSpace' do
     erb :'spaces/new'
   end
