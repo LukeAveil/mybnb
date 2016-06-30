@@ -13,4 +13,13 @@ class Space
   belongs_to :user
 
   has n, :available_dates, through: Resource
+
+  def confirm_booking_on(date)
+    self.available_dates = self.available_dates.select do |av_date|
+      av_date.date != date
+    end
+    
+    self.save
+  end
+
 end
