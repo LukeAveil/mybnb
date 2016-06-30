@@ -47,7 +47,7 @@
     </script>
   <% end %>
 
-  <% if @space.user.id != @user.id %>
+  <% if @user && @space.user.id != @user.id %>
     <div id="request_form">
       <form action="/requests" method="post">
         <input type='hidden' name='space_id' value='<%= params[:id] %>'>
