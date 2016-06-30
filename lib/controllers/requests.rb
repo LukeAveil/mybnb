@@ -10,11 +10,13 @@ class MakersBnB < Sinatra::Base
     erb :'requests/index'
   end
 
-  put '/requests' do
-    request = Request.create(user: User.first(id: session[:user_id]),
-                          space: Space.first(id: params[:space_id]),
-                          confirmed: 0,
-                          date: Date.parse(params[:requested_date]))
+  post '/requests' do
+    if Date.parse(params[:requested_date]) >= Date.today
+      request = Request.create(user: User.first(id: session[:user_id]),
+                            space: Space.first(id: params[:space_id]),
+                            confirmed: 0,
+                            date: Date.parse(params[:requested_date]))
+    end
     redirect '/requests'
   end
 

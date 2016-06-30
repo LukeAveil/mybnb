@@ -23,17 +23,17 @@ class MakersBnB < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
     @available_dates = @space.available_dates.map { |d| d.date }
-
-    calendar = Calendar.new(@available_dates)
-    @date_list = calendar.list_dates
+    @date_list = Calendar.days_for_next_year
     erb :'spaces/view'
   end
 
   put '/spaces/:id' do
     @space = Space.first(id: params[:id])
+  if @space.user_id == @user.id
     date = AvailableDate.create(date: Date.parse(params[:date]))
     @space.available_dates << date
     @space.save
+  end
     redirect "/spaces/#{ params[:id] }"
   end
 
