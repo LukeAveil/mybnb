@@ -11,8 +11,8 @@ class Request
   belongs_to :user
   belongs_to :space
 
-  def self.date_valid(available_dates, requested_dated)
-     return available_dates.map{|av_date| return av_date.date}.include?{requested_date}
+  def self.date_valid(available_dates, requested_date)
+     available_dates.map{|av_date| av_date.date}.include?(requested_date)
   end
 
 end
