@@ -7,7 +7,7 @@ class MakersBnB < Sinatra::Base
   set :session_secret, 'super secret'
 
   before do
-    @user = User.first(id: session[:user_id])
+    @user ||= User.first(id: session[:user_id])
   end
 
   # start the server if ruby file executed directly
