@@ -18,10 +18,6 @@ class MakersBnB < Sinatra::Base
     end
   end
 
-  get '/sessions/new' do
-    erb :'users/login'
-  end
-
   post '/sessions/new' do
     user = User.authenticate(params[:email], params[:password])
 
@@ -30,7 +26,7 @@ class MakersBnB < Sinatra::Base
       redirect '/spaces'
     else
       flash[:errors] = ["Invalid email or password"]
-      redirect '/sessions/new'
+      redirect '/spaces'
     end
   end
 
