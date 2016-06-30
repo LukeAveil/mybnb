@@ -2,7 +2,12 @@
 <html>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,200,100,700,900' rel='stylesheet' type='text/css'>    <link rel="stylesheet" href="styles/style.css">
+
     <title>MakersBnB</title>
+
+    <script src="/js/lib/jquery.js"></script>
+    <script src="/js/interface.js"></script>
+
   </head>
 
   <body>
@@ -26,13 +31,16 @@
             <% end %>
             </div>
           <% if @user %>
-            <div class="layoutLinkBox">
+            <div class="layoutLinkBox" id="spaces_link">
+              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
               <a href="/spaces" class="layoutLink">Spaces</a>
             </div>
             <div class="layoutLinkBox">
+              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
               <a href="/requests" class="layoutLink">Requests</a>
             </div>
             <div class="layoutLinkBox">
+              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
               <form method="post" action="/sessions">
                 <input type="hidden" name="_method" value="delete">
                 <input type="submit" value="Sign Out" class="signOut">
