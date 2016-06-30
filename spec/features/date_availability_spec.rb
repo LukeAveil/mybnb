@@ -53,4 +53,15 @@ feature 'Date handling' do
     expect(Request.last.confirmed).to eq 1
   end
 
+  scenario 'User cannot add a date that has been confirmed' do
+    makeRequest
+    click_button 'Approve'
+    expect(Space.last.available_dates.length).to eq(0)
+    visit '/spaces'
+    click_link 'view space'
+    fill_in 'date', with: '2016-08-16'
+    click_button('add availability')
+    expect(page).to have_content('Date already booked')
+    expect(Space.last.available_dates.length).to eq(0)
+  end
 end

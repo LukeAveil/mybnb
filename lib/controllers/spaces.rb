@@ -9,7 +9,7 @@ class MakersBnB < Sinatra::Base
     erb :'spaces/new'
   end
 
-  put '/spaces' do
+  post '/spaces' do
     space = Space.new(name: params[:name],
                       price: params[:price],
                       description: params[:description],
@@ -33,9 +33,13 @@ class MakersBnB < Sinatra::Base
   put '/spaces/:id' do
     @space = Space.first(id: params[:id])
     if @space.user_id == @user.id
-      date = AvailableDate.create(date: Date.parse(params[:date]))
-      @space.available_dates << date
-      @space.save
+      if Request.date_not_already_booked(@space,params[:date])
+        date = AvailableDate.create(date: Date.parse(params[:date]))
+        @space.available_dates << date
+        @space.save
+      else
+        flash[:errors] = ["Date already booked"]
+      end
     end
     redirect "/spaces/#{ params[:id] }"
   end
