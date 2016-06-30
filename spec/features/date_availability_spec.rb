@@ -23,7 +23,7 @@ feature 'Date handling' do
   scenario 'Only a spaces owner can add available dates' do
     signup
     listSpace
-    click_button('Sign Out')
+    click_button('Sign out')
     signup(email: 'jeff@jeff.com')
     click_link 'view space'
     expect(page).not_to have_button('add availability')

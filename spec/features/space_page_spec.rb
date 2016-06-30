@@ -2,7 +2,7 @@ feature "Booking a space" do
 	scenario "User confirms request" do
 		signup
 		listSpace
-		click_button "Sign Out"
+		click_button "Sign out"
 		signup(email: "jeff@jeff.com")
 		click_link "view space"
 		fill_in :requested_date, with: "16/08/2016"
