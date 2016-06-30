@@ -36,7 +36,7 @@ def makeRequest
   signup(email: 'ken@ken.com')
   visit '/spaces'
   click_link "view space"
-  click_link "2016-08-16"
+  fill_in :requested_date, with: "16/08/2016"
   click_button "confirm request"
   click_button('Sign out')
   signin

@@ -1,18 +1,11 @@
 feature "Booking a space" do
-
-	scenario "User selects date" do
-		signup
-		listSpace
-		click_link "view space"
-		click_link "2016-08-16"
-		expect(page).to have_xpath("//input[@value='2016-08-16']")
-	end
-
 	scenario "User confirms request" do
 		signup
 		listSpace
+		click_button "Sign Out"
+		signup(email: "jeff@jeff.com")
 		click_link "view space"
-		click_link "2016-08-16"
+		fill_in :requested_date, with: "16/08/2016"
 		click_button "confirm request"
 		expect(current_path).to eq "/requests"
 		expect(page).to have_content("Luke's place")
