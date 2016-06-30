@@ -1,20 +1,21 @@
+<div id="content">
+  <% @requests_made.each do |request| %>
+    <p>
+      <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
+      <%= get_request_status(request.confirmed) %><br>
+      <%= request.date %>
+    </p>
+  <% end %>
 
-<% @requests_made.each do |request| %>
-  <p>
-    <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
-    <%= get_request_status(request.confirmed) %><br>
-    <%= request.date %>
-  </p>
-<% end %>
-
-<% @requests_received.each do |request| %>
-  <section id="request_<%=request.id%>">
-    <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
-    <%= get_request_status(request.confirmed) %><br>
-    <%= request.date %>
-    <form action="/requests/<%= request.id %>" method="POST">
-      <input type='hidden' name='_method' value='put'>
-        	<input type="submit" value="Approve">
-    </form>
-  </section>
-<% end %>
+  <% @requests_received.each do |request| %>
+    <section id="request_<%=request.id%>">
+      <a href="/spaces/<%= request.space.id %>"><%= request.space.name %></a><br>
+      <%= get_request_status(request.confirmed) %><br>
+      <%= request.date %>
+      <form action="/requests/<%= request.id %>" method="POST">
+        <input type='hidden' name='_method' value='put'>
+          	<input type="submit" value="Approve">
+      </form>
+    </section>
+  <% end %>
+</div>
