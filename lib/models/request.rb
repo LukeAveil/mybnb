@@ -21,7 +21,7 @@ class Request
 
   def self.unconfirmed_requests_for?(space)
     self.all.select do |req|
-      req.confirmed == (1 || 2) && self.spaces.include?(space)
+      req.confirmed == (1 || 2) && self.space == space
     end
   end
 

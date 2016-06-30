@@ -19,7 +19,7 @@ class MakersBnB < Sinatra::Base
     redirect '/requests'
   end
 
-  put '/requests/approve/:id' do
+  put '/requests/:id' do
     request = Request.first(id: params[:id])
     space = request.space
 
@@ -42,8 +42,8 @@ class MakersBnB < Sinatra::Base
       messages[number]
     end
 
-    def confirmed?(request)
-      request == 1 || 2 ? true : false
+    def unconfirmed?(request)
+      request.confirmed == 0
     end
   end
 
