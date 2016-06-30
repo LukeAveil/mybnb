@@ -36,4 +36,7 @@ class Request
     end
   end
 
+  def self.date_not_already_booked(space, date)
+    return Request.all(space: space, date: Date.parse(date), confirmed: 2).empty?
+  end
 end

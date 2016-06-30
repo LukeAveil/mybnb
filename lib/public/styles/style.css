@@ -6,6 +6,7 @@ body  {
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  color: #011F34;
 }
 
 h1  {
@@ -219,6 +220,11 @@ h2  {
 }
 
 #spaces {
+  margin: 0;
+  padding: 0;
+}
+
+#spaces li {
   width: 800px;
   margin: 25px 0px 0px 0px;
   background-color: #FFF;

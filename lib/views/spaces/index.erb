@@ -10,7 +10,13 @@
     </form>
   </div>
   <div id="listSpace">
-    <a href="/listSpace" class="listSpaceButton">List a space</a>
+    <% if @user %>
+      <a href="/listSpace" class="listSpaceButton">List a space</a>
+    <% else %>
+      <div style="color:#FFF; font-size: 24px; font-weight: lighter; width:160px; text-align:center">
+        Sign up or Log in to list a Space
+      </div>
+    <% end %>
   </div>
 </div>
 
