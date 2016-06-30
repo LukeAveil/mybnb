@@ -1,7 +1,14 @@
 class MakersBnB < Sinatra::Base
 
   get '/spaces' do
-    @spaces = Space.all
+    if params[:from]
+      @spaces = Space.all.select do |space|
+        space.in_range?(Date.parse(params[:from]), Date.parse(params[:to]))
+      end
+    else
+      @spaces = Space.all
+    end
+
     erb :'spaces/index'
   end
 
