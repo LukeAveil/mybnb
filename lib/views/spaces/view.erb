@@ -1,34 +1,38 @@
-<h1><%= @space.name %></h1>
-Description:  <%= @space.description %>
-Price:   <%= @space.price   %>
-<br>
+<div id="content">
 
-<form action="/spaces/<%= params[:id] %>" method ="post">
-  <input type='hidden' name='_method' value='put'>
-  <label for = "date">
-    Available date:
-    <input type="text" name="date"/>
-  </label>
+  <h1><%= @space.name %></h1>
+  Description:  <%= @space.description %>
+  Price:   <%= @space.price   %>
+  <br>
 
-  <input type="submit" value="add availability">
-</form>
+  <form action="/spaces/<%= params[:id] %>" method ="post">
+    <input type='hidden' name='_method' value='put'>
+    <label for = "date">
+      Available date:
+      <input type="text" name="date"/>
+    </label>
 
-<% @date_list.each do |date| %>
-	<% if @available_dates.include?(date) %>
-	  <a href="/spaces/<%= params[:id] %>?date=<%= date %>"><%= date %></a>
-    <br>
-	<% else %>
-    <%= date %>
-    <br>
-	<% end %>
-<% end %>
-<br>
+    <input type="submit" value="add availability">
+  </form>
 
-<form action="/requests" method="post">
-  <input type='hidden' name='_method' value='put'>
-  <input type='hidden' name='space_id' value='<%= params[:id] %>'>
-  <input type='hidden' name='requested_date' value='<%= params[:date] %>'>
+  <% @date_list.each do |date| %>
+  	<% if @available_dates.include?(date) %>
+  	  <a href="/spaces/<%= params[:id] %>?date=<%= date %>"><%= date %></a>
+      <br>
+  	<% else %>
+      <%= date %>
+      <br>
+  	<% end %>
+  <% end %>
+  <br>
 
-  Requested Date: <input type="text" value="<%= params[:date] %>" disabled="true">
-  <input type="submit" value="confirm request">
-</form>
+  <form action="/requests" method="post">
+    <input type='hidden' name='_method' value='put'>
+    <input type='hidden' name='space_id' value='<%= params[:id] %>'>
+    <input type='hidden' name='requested_date' value='<%= params[:date] %>'>
+
+    Requested Date: <input type="text" value="<%= params[:date] %>" disabled="true">
+    <input type="submit" value="confirm request">
+  </form>
+
+</div>
