@@ -30,8 +30,8 @@ h2  {
   top: 0;
   bottom: 0;
   margin: auto;
-  width    : 380px;
-  height   : 260px;
+  width    : 330px;
+  height   : 240px;
   z-index  : 10;
   display  : none;
   background-color: #FFF;
@@ -46,7 +46,7 @@ h2  {
   top: 0;
   bottom: 0;
   margin: auto;
-  width    : 380px;
+  width    : 330px;
   height   : 300px;
   z-index  : 10;
   display  : none;
@@ -58,11 +58,13 @@ h2  {
 #login_overlay h1 {
   font-weight: 300;
   color: #459CD5;
+  font-size: 30px;
 }
 
 #signup_overlay h1 {
   font-weight: 300;
   color: #459CD5;
+  font-size: 30px;
 }
 
 #overlay_back {
@@ -140,11 +142,15 @@ h2  {
 
 #spaces li {
   width: 800px;
-  margin: 25px 0px 0px 0px;
+  margin: 0px 0px 25px 0px;
   background-color: #FFF;
-  min-height: 120px;
+  min-height: 140px;
   list-style: none;
   padding: 25px;
+}
+
+li h1 {
+  margin: 0;
 }
 
 #spacesFilter h1  {
@@ -170,6 +176,8 @@ h2  {
   border-style: solid;
   border-width: 0 1px 0 0;
   border-color: rgba(71, 218, 255, .3);
+  color: #FFF;
+  font-size: 12px;
 }
 
 #listSpace  {

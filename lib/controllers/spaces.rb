@@ -14,7 +14,7 @@ class MakersBnB < Sinatra::Base
 
   get '/my_spaces' do
     @spaces = Space.all(user: @user)
-    erb :'spaces/index'
+    erb :'spaces/myspaces'
   end
 
 

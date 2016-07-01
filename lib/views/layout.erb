@@ -68,8 +68,9 @@
 
     <div id="main_wrapper">
       <div id="layoutHeader">
-
-
+        <div id="homeLinkWrapper">
+          <a href="/" id="homeLink"></a>
+        </div>
         <div id="layoutContentWrapper">
 
           <div id="emailBox">
@@ -92,24 +93,24 @@
               <div class="hoverHighlightHidden" id="requestlink_hl"></div>
               <a href="/requests" class="layoutLink">Requests</a>
             </div>
-            <div class="layoutLinkBox">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+            <div class="layoutLinkBox" id="signoutlink">
+              <div class="hoverHighlightHidden" id="signoutlink_hl"></div>
               <form method="post" action="/sessions">
                 <input type="hidden" name="_method" value="delete">
                 <input type="submit" value="Sign out" id="signOut" class="signOut">
               </form>
             </div>
           <% else %>
-            <div class="layoutLinkBox" id="spaces_link">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+          <div class="layoutLinkBox" id="spacelink">
+            <div class="hoverHighlightHidden" id="spacelink_hl"></div>
               <a href="/spaces" class="layoutLink">Spaces</a>
             </div>
-            <div class="layoutLinkBox">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+            <div class="layoutLinkBox" id="signuplink">
+              <div class="hoverHighlightHidden" id="signuplink_hl"></div>
               <a href="#" class="layoutLink" id="signup_link">Sign up</a>
             </div>
-            <div class="layoutLinkBox">
-              <div class="hoverHighlightHidden" id="spaces_highlight"></div>
+            <div class="layoutLinkBox" id="loginlink">
+              <div class="hoverHighlightHidden" id="loginlink_hl"></div>
               <a href="#" class="layoutLink" id="login_link">Log in</a>
             </div>
           <% end %>
