@@ -27,6 +27,7 @@ def listSpace
   fill_in 'price', with: '200'
   fill_in 'start_date', with: '2016-07-10'
   fill_in 'end_date', with: '2016-07-18'
+  attach_file 'photo', "spec/support/uploads/croc2.jpg"
   click_button('List space')
 end
 
@@ -53,6 +54,7 @@ def listanotherSpace
   fill_in 'price', with: '150'
   fill_in 'start_date', with: '2016-07-11'
   fill_in 'end_date', with: '2016-07-17'
+  attach_file 'photo', "spec/support/uploads/croc2.jpg"
   click_button('List space')
   click_button('Sign out')
 end

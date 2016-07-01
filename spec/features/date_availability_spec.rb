@@ -33,9 +33,6 @@ feature 'Date handling' do
 
   scenario 'upon booking, booking date removed from available dates' do
     makeRequest
-    # expect(Space.first.available_dates.first.date).to eq Date.parse('2016-08-16')
-    # click_button "Approve"
-    # expect(Space.first.available_dates).to be_empty
     click_button "Approve"
     expect(Space.first.available_dates.map{|av_date| av_date.date}).not_to include Date.parse('2016-07-14')
   end
@@ -51,7 +48,7 @@ feature 'Date handling' do
     click_button "Sign out"
     signin
     visit '/requests'
-    within 'section#request_4' do
+    within 'section#request_2' do
       click_button 'Approve'
     end
     expect(Request.first.confirmed).to eq 1

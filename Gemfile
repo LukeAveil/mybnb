@@ -5,6 +5,8 @@ ruby '2.3.1'
 gem 'sinatra'
 gem 'sinatra-flash'
 gem 'rake'
+gem 'mini_magick'
+
 
 group :database do
   gem 'data_mapper'
