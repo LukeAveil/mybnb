@@ -1,5 +1,7 @@
 require 'data_mapper'
 require './lib/app.rb'
+require 'date'
+require './lib/models/available_date.rb'
 
 namespace :db do
 
@@ -12,7 +14,8 @@ namespace :db do
 	desc "Destructive upgrade"
 	task :auto_migrate do
 		DataMapper.auto_migrate!
+    (Date.today..(Date.today + 500)).each {|date| AvailableDate.create(date: date)}
 		puts "Auto-migrate complete (data was lost)"
 	end
-
+	
 end
