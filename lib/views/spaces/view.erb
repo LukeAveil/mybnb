@@ -1,17 +1,17 @@
 <div id="content">
+  <div class="large_image">
+    <img id="photo" src="/image_uploads/<%= @space.photo %>" alt="space photo" />
+    <h1><%= @space.name %></h1>
+    <strong>Price:</strong>   <%= @space.price   %><br>
+    <%= @space.description %>
+    <br>
+  </div>
 
-  <h1><%= @space.name %></h1>
-  <img id="photo" src="/image_uploads/<%= @space.photo %>" alt="space photo" />
-  <br>
-  <br>
-  <strong>Description:</strong>  <%= @space.description %><br>
-  <strong>Price:</strong>   <%= @space.price   %>
-  <br>
-  <br>
 
   <h2 id="dp_title"></h2>
-
-  <div id="datepicker"></div>
+  <div id="cal_wrapper">
+    <div id="datepicker"></div>
+  </div>
 
   <br>
 
@@ -19,7 +19,6 @@
     <form id="calendar_date_box" action="/spaces/<%= params[:id] %>" method ="post">
       <input type='hidden' name='_method' value='put'>
       <label for="date">
-        Available date:
         <input type="date" class="whiteBox" name="date" id="available_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>" />
       </label>
 
@@ -54,7 +53,7 @@
     <div id="calendar_date_box">
       <form action="/requests" method="post">
         <input type='hidden' name='space_id' value='<%= params[:id] %>'>
-        Requested Date: <input type="date" id="requested_date" name="requested_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>">
+        <input type="date" id="requested_date" name="requested_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>">
         <input type="submit" value="confirm request">
       </form>
     </div>

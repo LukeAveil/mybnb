@@ -29,11 +29,13 @@
   <ul id='spaces'>
     <% @spaces.each do |space| %>
       <li>
-        <img id="photo" src="/image_uploads/small_<%= space.photo %>" alt="space photo" />
+        <div class="small_photo">
+          <img id="photo" src="/image_uploads/small_<%= space.photo %>" alt="space photo" />
+        </div>
         <h1><%= space.name %></h1>
         <p>Price: <span class="orange">£<%= space.price   %></span> per night
         <br>
-        Description:  <%= space.description %>
+        Description:  <%= space.description.slice(0, 65) + "..."  %>
       </p>
         <a href="spaces/<%=space.id%>" class="viewSpace">view space</a>
       </li>

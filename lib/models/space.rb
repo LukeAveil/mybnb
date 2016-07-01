@@ -38,7 +38,7 @@ class Space
     image.write "./lib/public/image_uploads/small_#{filename}"
 
     image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
-    image.resize "850x850"
+    image.resize "500x500"
     image.write "./lib/public/image_uploads/#{filename}"
 
   end
