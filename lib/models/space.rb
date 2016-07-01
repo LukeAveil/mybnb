@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'mini_magick'
 
 class Space
 
@@ -9,6 +10,7 @@ class Space
   property :name, String
   property :description, String, length: 500
   property :price, String
+  property :photo, String
 
   belongs_to :user
 
@@ -24,6 +26,21 @@ class Space
 
   def in_range?(from, to)
     available_dates.any? { |dateObj| (dateObj.date >= from && dateObj.date <= to) }
+  end
+
+  def self.upload_photo(filename, file_contents)
+    File.open('./lib/public/image_uploads/' + filename, "w") do |f|
+      f.write(file_contents.read)
+    end
+
+    image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
+    image.resize "200x200"
+    image.write "./lib/public/image_uploads/small_#{filename}"
+
+    image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
+    image.resize "850x850"
+    image.write "./lib/public/image_uploads/#{filename}"
+
   end
 
 end

@@ -26,10 +26,14 @@ class MakersBnB < Sinatra::Base
     space = Space.new(name: params[:name],
                       price: params[:price],
                       description: params[:description],
+                      photo: params[:photo][:filename],
                       user: @user)
+
     date = AvailableDate.create(date: Date.parse(params[:date]))
     space.available_dates << date
     space.save
+    Space.upload_photo(params[:photo][:filename],
+                       params[:photo][:tempfile])
     redirect '/spaces'
   end
 

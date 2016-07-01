@@ -1,32 +1,41 @@
 <div id="content">
 	<h1>List a space</h1>
 
-	<form action="/spaces" method ="post">
-		<label for = "name">
+	<form action="/spaces" method="post" enctype="multipart/form-data">
+		<label for="name">
 		  Name:
 		  <input type="text" name="name"/>
 		</label>
 
 		<br><br>
 
-		<label for = "price">
+		<label for="price">
 		  Price:
 		  <input type="text" name="price"/>
 		</label>
 
 		<br><br>
 
-		<label for = "description">
+		<label for="description">
 		  Description:
 		  <input type="text" name="description"/>
 		</label>
 
 		<br><br>
 
-	  <label for = "date">
+	  <label for="date">
 		  Available date:
 		  <input type="text" name="date"/>
 		</label>
+
+    <br><br>
+
+    <label for="photo">
+      Upload a photo:
+      <input type="file" name="photo" accept="image/*">
+    </label>
+
+    <br><br>
 
 		<input type="submit" value="List space">
 

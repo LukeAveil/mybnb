@@ -26,6 +26,7 @@ def listSpace
   fill_in 'description', with: 'Nice place in Shoreditch'
   fill_in 'price', with: '200'
   fill_in 'date', with: '2016-08-16'
+  attach_file 'photo', "spec/support/uploads/croc2.jpg"
   click_button('List space')
 end
 
@@ -51,6 +52,7 @@ def listanotherSpace
   fill_in 'description', with: 'Nice place in Holborn'
   fill_in 'price', with: '150'
   fill_in 'date', with: '2016-08-08'
+  attach_file 'photo', "spec/support/uploads/croc2.jpg"
   click_button('List space')
   click_button('Sign out')
 end

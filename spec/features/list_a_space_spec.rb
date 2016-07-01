@@ -12,4 +12,13 @@ feature 'List a space' do
       end
   end
 
+  scenario 'User can upload an image' do
+    signup
+    listSpace
+    space = Space.last
+    expect(space.photo).to eq "croc2.jpg"
+    visit "spaces/#{space.id}"
+    expect(page).to have_xpath "//img[@src='/image_uploads/croc2.jpg']"
+  end
+
 end
