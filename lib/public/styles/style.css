@@ -80,6 +80,12 @@ h2  {
   display    : none;
 }
 
+#cal_wrapper {
+  float: left;
+  margin-bottom: 10px
+
+}
+
 .signupBoxes  {
   width: 270px;
   height: 40px;
@@ -127,6 +133,12 @@ h2  {
   padding: 25px;
 }
 
+.large_image {
+  float: right;
+  width: 500px;
+}
+
+
 .viewSpace  {
   text-decoration: none;
   color: #FFF;
@@ -147,6 +159,10 @@ h2  {
   min-height: 140px;
   list-style: none;
   padding: 25px;
+}
+
+.small_photo {
+  float: right
 }
 
 .user1  {
