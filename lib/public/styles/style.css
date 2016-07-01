@@ -149,6 +149,22 @@ h2  {
   padding: 25px;
 }
 
+.user1  {
+  width: 600px;
+  margin: 0px 200px 25px 0px;
+  background-color: #FFF;
+  min-height: 80px;
+  padding: 25px;
+}
+
+.user2  {
+  width: 600px;
+  margin: 0px 0px 25px 200px;
+  background-color: #FFF;
+  min-height: 80px;
+  padding: 25px;
+}
+
 li h1 {
   margin: 0;
 }

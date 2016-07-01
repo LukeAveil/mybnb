@@ -1,0 +1,30 @@
+<div id="content">
+  <%= @active_request.space.name %>
+  <%= @active_request.space.price %>
+  <%= @active_request.space.description %>
+
+  <% if @active_request.confirmed == 2 %>
+  <form action="/messages" method ="post">
+    <input type="hidden" name="request_id" value="<%= @active_request.id %>">
+    <label for="message">
+      Message
+      <textarea name="message" rows="4" cols="60"/></textarea>
+    </label>
+    <input type="submit" value="send">
+  </form>
+  <% end %>
+    <% @active_request.messages.each do |message| %>
+      <% if message.user == @user %>
+        <div class="user1">
+          You:<br>
+          <%= message.message %>
+        </div>
+      <% else %>
+        <div class="user2">
+          <%= message.user.email %><br>
+          <%= message.message %>
+        </div>
+      <% end %>
+  <% end %>
+
+</div>

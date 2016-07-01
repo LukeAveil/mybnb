@@ -10,6 +10,7 @@ class Request
 
   belongs_to :user
   belongs_to :space
+  has n, :messages
 
   def confirm
     self.update(confirmed: 2)
