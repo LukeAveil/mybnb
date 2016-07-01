@@ -7,6 +7,7 @@ class Request
   property :id, Serial
   property :confirmed, Integer
   property :date, Date
+  property :payment_received, Boolean, default: false
 
   belongs_to :user
   belongs_to :space
