@@ -19,6 +19,11 @@ class MakersBnB < Sinatra::Base
     redirect '/requests'
   end
 
+  get '/requests/:id' do
+    @active_request = Request.first(id: params[:id])
+    erb :'requests/view'
+  end
+
   put '/requests/:id' do
     request = Request.first(id: params[:id])
     space = request.space

@@ -6,6 +6,7 @@ require_relative 'models/user.rb'
 require_relative 'models/space'
 require_relative 'models/available_date'
 require_relative 'models/request'
+require_relative 'models/message'
 
 DataMapper.setup(
   :default, ENV['DATABASE_URL'] ||
