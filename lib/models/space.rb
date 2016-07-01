@@ -41,6 +41,10 @@ class Space
     image.resize "850x850"
     image.write "./lib/public/image_uploads/#{filename}"
 
+    image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
+    image.resize "128x128"
+    image.write "./lib/public/image_uploads/stripe_#{filename}"
+
   end
 
 end
