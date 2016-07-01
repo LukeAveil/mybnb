@@ -17,5 +17,11 @@ namespace :db do
     (Date.today..(Date.today + 500)).each {|date| AvailableDate.create(date: date)}
 		puts "Auto-migrate complete (data was lost)"
 	end
-	
+
+	desc "Seed Database with Available Dates"
+	task :seed_dates do
+		(Date.today..(Date.today + 500)).each {|date| AvailableDate.create(date: date)}
+		puts "Dates Added to available_dates tables"
+	end
+
 end
