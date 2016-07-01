@@ -22,8 +22,9 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation, {:except => %w[available_dates]}
     DatabaseCleaner.clean_with(:truncation)
+    (Date.today..(Date.today + 500)).each {|date| AvailableDate.first_or_create(date: date)}
   end
 
   config.before(:each) do

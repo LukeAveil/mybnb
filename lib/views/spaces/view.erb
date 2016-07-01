@@ -13,7 +13,7 @@
   <br>
 
   <% if @user && @space.user.id == @user.id %>
-    <form action="/spaces/<%= params[:id] %>" method ="post">
+    <form id="calendar_date_box" action="/spaces/<%= params[:id] %>" method ="post">
       <input type='hidden' name='_method' value='put'>
       <label for="date">
         Available date:
@@ -48,7 +48,7 @@
   <% end %>
 
   <% if @user && @space.user.id != @user.id %>
-    <div id="request_form">
+    <div id="calendar_date_box">
       <form action="/requests" method="post">
         <input type='hidden' name='space_id' value='<%= params[:id] %>'>
         Requested Date: <input type="date" id="requested_date" name="requested_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>">

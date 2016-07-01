@@ -19,6 +19,8 @@ class MakersBnB < Sinatra::Base
 
 
   get '/listSpace' do
+    @min_date = Date.today
+    @max_date = Date.today + 365
     erb :'spaces/new'
   end
 
@@ -27,8 +29,9 @@ class MakersBnB < Sinatra::Base
                       price: params[:price],
                       description: params[:description],
                       user: @user)
-    date = AvailableDate.create(date: Date.parse(params[:date]))
-    space.available_dates << date
+    start_date = Date.parse(params[:start_date])
+    end_date = Date.parse(params[:end_date])
+    space.available_dates = AvailableDate.all(date: start_date..end_date)
     space.save
     redirect '/spaces'
   end

@@ -4,19 +4,21 @@ feature 'Date handling' do
     signup
     listSpace
     expect(current_path).to eq '/spaces'
-    space = Space.first
-    date = Date.parse('2016-08-16')
-    expect(space.available_dates.first.date).to eq(date)
+    space = Space.last
+    first_date = Date.parse('2016-07-10')
+    last_date = Date.parse('2016-07-18')
+    expect(space.available_dates.first.date).to eq(first_date)
+    expect(space.available_dates.last.date).to eq(last_date)
   end
 
   scenario 'User can add additional available dates' do
     signup
     listSpace
     click_link 'view space'
-    fill_in 'date', with: '2016-07-16'
+    fill_in 'date', with: '2016-07-19'
     click_button('add availability')
     space = Space.first
-    date = Date.parse('2016-07-16')
+    date = Date.parse('2016-07-19')
     expect(space.available_dates.last.date).to eq(date)
   end
 
@@ -31,9 +33,11 @@ feature 'Date handling' do
 
   scenario 'upon booking, booking date removed from available dates' do
     makeRequest
-    expect(Space.first.available_dates.first.date).to eq Date.parse('2016-08-16')
+    # expect(Space.first.available_dates.first.date).to eq Date.parse('2016-08-16')
+    # click_button "Approve"
+    # expect(Space.first.available_dates).to be_empty
     click_button "Approve"
-    expect(Space.first.available_dates).to be_empty
+    expect(Space.first.available_dates.map{|av_date| av_date.date}).not_to include Date.parse('2016-07-14')
   end
 
   scenario 'upon approval, other requests for that space and date are rejected' do
@@ -42,7 +46,7 @@ feature 'Date handling' do
     signup(email: 'jeff@jeff.com')
     visit '/spaces'
     click_link "view space"
-    fill_in :requested_date, with: "16/08/2016"
+    fill_in :requested_date, with: "14/07/2016"
     click_button "confirm request"
     click_button "Sign out"
     signin
@@ -50,18 +54,18 @@ feature 'Date handling' do
     within 'section#request_2' do
       click_button 'Approve'
     end
-    expect(Request.last.confirmed).to eq 1
+    expect(Request.first.confirmed).to eq 1
   end
 
   scenario 'User cannot add a date that has been confirmed' do
     makeRequest
     click_button 'Approve'
-    expect(Space.last.available_dates.length).to eq(0)
+    expect(Space.last.available_dates.length).to eq(8)
     visit '/spaces'
     click_link 'view space'
-    fill_in 'date', with: '2016-08-16'
+    fill_in 'date', with: '2016-07-14'
     click_button('add availability')
     expect(page).to have_content('Date already booked')
-    expect(Space.last.available_dates.length).to eq(0)
+    expect(Space.last.available_dates.length).to eq(8)
   end
 end

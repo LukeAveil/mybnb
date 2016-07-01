@@ -23,10 +23,16 @@
 
 		<br><br>
 
-	  <label for = "date">
-		  Available date:
-		  <input type="text" name="date"/>
+	  <label for = "start_date">
+		  Start Date:
+		  <input type="date" name="start_date" min="<%=@min_date%>" max="<%=@max_date%>"/>
 		</label>
+
+		<label for = "end_date">
+		  End Date:
+		  <input type="date" name="end_date" min="<%=@min_date%>" max="<%=@max_date%>"/>
+		</label>
+
 
 		<input type="submit" value="List space">
 
