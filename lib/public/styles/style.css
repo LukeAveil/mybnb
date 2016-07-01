@@ -355,11 +355,11 @@ h2  {
   color: #459CD5;
 }
 
-input[type="date"]::-webkit-input-placeholder{
+#calendar_date_box input[type="date"]::-webkit-input-placeholder{
     visibility: hidden !important;
 }
 
-input::-webkit-calendar-picker-indicator{
+#calendar_date_box input::-webkit-calendar-picker-indicator{
     display: none;
 }
 
