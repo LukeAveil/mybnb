@@ -30,8 +30,8 @@ h2  {
   top: 0;
   bottom: 0;
   margin: auto;
-  width    : 380px;
-  height   : 260px;
+  width    : 330px;
+  height   : 240px;
   z-index  : 10;
   display  : none;
   background-color: #FFF;
@@ -46,7 +46,7 @@ h2  {
   top: 0;
   bottom: 0;
   margin: auto;
-  width    : 380px;
+  width    : 330px;
   height   : 300px;
   z-index  : 10;
   display  : none;
@@ -58,11 +58,13 @@ h2  {
 #login_overlay h1 {
   font-weight: 300;
   color: #459CD5;
+  font-size: 30px;
 }
 
 #signup_overlay h1 {
   font-weight: 300;
   color: #459CD5;
+  font-size: 30px;
 }
 
 #overlay_back {
@@ -125,92 +127,6 @@ h2  {
   padding: 25px;
 }
 
-#layoutHeader {
-  width: 100%;
-  height: 120px;
-  background-image: url(/images/logo.png);
-  background-position: left;
-  background-repeat: no-repeat;
-  text-align: right;
-}
-
-#layoutContentWrapper {
-  width: 300px;
-  height: 120px;
-  float: right;
-}
-
-#emailBox {
-  height: 27px;
-  width: 100%;
-  border-style: solid;
-  border-width: 0 0 1px 0;
-  border-color: rgba(71, 218, 255, .3);
-  background-color: rgba(0, 0, 0, .6);
-  font-size: 12px;
-  font-weight: 600;
-  color: #FFF;
-  text-align: center;
-  padding-top: 8px;
-}
-
-.layoutLinkBox   {
-  margin-left: 27px;
-  height: 30px;
-  float: left;
-  padding-top: 24px;
-  text-align: center;
-}
-
-.layoutLink {
-  text-decoration: none;
-  display: block;
-  padding: 3px;
-  color: #BEDFF4;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-.layoutLink:hover {
-  color: #FFF;
-}
-
-.hoverHighlightHidden {
-  margin-bottom: 5px;
-  height: 6px;
-  background-color: #F59D00;
-  width: 0px;
-  transition: all 0.3s;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hoverHighlight {
-  margin-bottom: 5px;
-  height: 6px;
-  background-color: #F59D00;
-  width: 100%;
-  transition: all 0.3s;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.signOut  {
-  background: none;
-  color: #BEDFF4;
-  font-family: 'Lato', sans-serif;
-  border: 0;
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-}
-
-.signOut:hover  {
-  color: #FFF;
-}
-
 .viewSpace  {
   text-decoration: none;
   color: #FFF;
@@ -226,11 +142,15 @@ h2  {
 
 #spaces li {
   width: 800px;
-  margin: 25px 0px 0px 0px;
+  margin: 0px 0px 25px 0px;
   background-color: #FFF;
-  min-height: 120px;
+  min-height: 140px;
   list-style: none;
   padding: 25px;
+}
+
+li h1 {
+  margin: 0;
 }
 
 #spacesFilter h1  {
@@ -256,6 +176,8 @@ h2  {
   border-style: solid;
   border-width: 0 1px 0 0;
   border-color: rgba(71, 218, 255, .3);
+  color: #FFF;
+  font-size: 12px;
 }
 
 #listSpace  {
@@ -296,6 +218,36 @@ h2  {
   padding-left: 5px;
   color: #FFF;
   font-size: 14px;
+}
+
+.whiteBox {
+  width: 130px;
+  height: 28px;
+  background-color: #FFF;
+  border: 0px;
+  padding-left: 5px;
+  color: #011F34;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.addAvailButton  {
+  width: 120px;
+  height: 28px;
+  background-color: #FFF;
+  display: inline-block;
+  font-size: 14px;
+  color: #011F34;
+  transition: all 0.3s;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+
+}
+
+.addAvailButton:hover  {
+  background-color: #459CD5;
+  color: #FFF;
 }
 
 .filter_button {
