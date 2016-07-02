@@ -1,30 +1,54 @@
 <div id="content">
-  <%= @active_request.space.name %>
-  <%= @active_request.space.price %>
-  <%= @active_request.space.description %>
 
-  <% if @active_request.confirmed == 2 %>
-  <form action="/messages" method ="post">
-    <input type="hidden" name="request_id" value="<%= @active_request.id %>">
-    <label for="message">
-      Message
-      <textarea name="message" rows="4" cols="60"/></textarea>
-    </label>
-    <input type="submit" value="send">
-  </form>
-  <% end %>
+  <ul id='spaces'>
+      <li>
+        <div class="small_photo">
+          <img id="photo" src="/image_uploads/small_<%= @active_request.space.photo %>" alt="space photo" />
+        </div>
+        <h1><%= @active_request.space.name %></h1>
+        <p>Booking date: <span class="orange"><%= @active_request.date   %></span><br>
+        Price: <span class="orange">£<%= @active_request.space.price   %></span>
+        <br>
+        <%= @active_request.space.description %>
+        </p>
+      </li>
+  </ul>
+
+  <div id="conversation">
+    <% if @active_request.user == @user %>
+      <h2> Conversation with landlord</h2>
+    <% else %>
+      <h2> Conversation with guest</h2>
+    <% end %>
+
+
     <% @active_request.messages.each do |message| %>
       <% if message.user == @user %>
         <div class="user1">
-          You:<br>
+          <strong>You:</strong><br>
           <%= message.message %>
         </div>
       <% else %>
         <div class="user2">
-          <%= message.user.email %><br>
+          <strong><%= message.user.email %></strong><br>
           <%= message.message %>
         </div>
       <% end %>
-  <% end %>
+    <% end %>
+
+    <% if @active_request.confirmed == 2 %>
+    <form action="/messages" method ="post">
+      <input type="hidden" name="request_id" value="<%= @active_request.id %>">
+      <label for="message">
+        Send Message:<br>
+        <div style="height: 5px"></div>
+        <textarea name="message" rows="4" cols="60"/></textarea><br>
+      </label>
+      <input type="submit" value="send" class="send_button" style="padding: 0 25px 0 25px">
+    </form>
+    <% end %>
+
+  </div>
+
 
 </div>

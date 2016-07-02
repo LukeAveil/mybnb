@@ -3,36 +3,36 @@
 
 	<form action="/spaces" method="post" enctype="multipart/form-data">
 		<label for="name">
-		  Name:
+		  Name:<br>
 		  <input type="text" name="name"/>
 		</label>
 
 		<br><br>
 
 		<label for="price">
-		  Price:
-		  <input type="text" name="price"/>
+		  Price:<br>
+		  <input type="text" name="price"/> per night
 		</label>
 
 		<br><br>
 
 		<label for="description">
-		  Description:
-		  <textarea name="description" rows="4" cols="60"/></textarea>
+		  Description:<br>
+		  <textarea name="description" rows="6" cols="100"/></textarea>
 		</label>
 
 		<br><br>
 
+		from: <span style="margin-left: 71px">to:</span><br>
 	  <label for = "start_date">
-		  Start Date:
 		  <input type="date" name="start_date" min="<%=@min_date%>" max="<%=@max_date%>"/>
 		</label>
 
 		<label for = "end_date">
-		  End Date:
 		  <input type="date" name="end_date" min="<%=@min_date%>" max="<%=@max_date%>"/>
 		</label>
-
+		<br>
+		<br>
     <label for="photo">
       Upload a photo:
       <input type="file" name="photo" accept="image/*">
@@ -40,7 +40,7 @@
 
     <br><br>
 
-		<input type="submit" value="List space">
+		<input type="submit" value="List space" class="send_button">
 
 	</form>
 </div>
