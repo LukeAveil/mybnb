@@ -1,45 +1,50 @@
 <div id="content">
-  <h1>Requests Made</h1>
-  <% @requests_made.each do |request| %>
-    <p>
-      <a href="/requests/<%= request.id %>"><%= request.space.name %></a><br>
-      <%= get_request_status(request.confirmed) %><br>
-      <%= request.date %><br>
-      Price: <%= request.space.price %><br>
-      <% if request.confirmed == 2 %>
-        <% if request.payment_received %>
-          Payment made of £<%= request.space.price %>
-        <% else %>
-          <form action="/charge" method="POST">
-            <input type="hidden" name="request_id" value="<%= request.id %>">
-            <script
-              src="https://checkout.stripe.com/checkout.js"
-              class="stripe-button"
-              data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-              data-image="/image_uploads/stripe_<%= request.space.photo %>"
-              data-name="MakersBnB"
-              data-description="<%= request.space.name %> (£<%= request.space.price %>)"
-              data-amount="<%= request.space.price %>00"
-              data-currency="GBP">
-            </script>
+  <div id="requestsMade">
+    <h2>Requests Made</h2>
+    <% @requests_made.each do |request| %>
+      <p style="border-bottom: 1px solid #CEDCE7">
+        <h3><a href="/requests/<%= request.id %>" class="requestLink"><%= request.space.name %></a></h3>
+        <%= get_request_status(request.confirmed) %><br>
+        <%= request.date %><br>
+        Price: £<%= request.space.price %><br>
+        <% if request.confirmed == 2 %>
+          <% if request.payment_received %>
+            Payment made of £<%= request.space.price %>
+          <% else %>
+            <form action="/charge" method="POST">
+              <input type="hidden" name="request_id" value="<%= request.id %>">
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                data-image="/image_uploads/stripe_<%= request.space.photo %>"
+                data-name="MakersBnB"
+                data-description="<%= request.space.name %> (£<%= request.space.price %>)"
+                data-amount="<%= request.space.price %>00"
+                data-currency="GBP">
+              </script>
+            </form>
+          <% end %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+  <div id="requestsReceived">
+
+    <h2>Requests Received</h2>
+    <% @requests_received.each do |request| %>
+      <section id="request_<%=request.id%>" style="border-bottom: 1px solid #CEDCE7; padding-bottom:15px; margin-top:15px;">
+        <h3><a href="/requests/<%= request.id %>"class="requestLink"><%= request.space.name %></a></h3>
+        <%= get_request_status(request.confirmed) %><br>
+        <%= request.date %>
+        <% if unconfirmed?(request) %>
+          <form action="/requests/<%= request.id %>" method="POST">
+            <input type='hidden' name='_method' value='put'>
+            <input type="submit" value="Approve">
           </form>
         <% end %>
-      <% end %>
-    </p>
-  <% end %>
+      </section>
+    <% end %>
 
-  <h1>Requests Received</h1>
-  <% @requests_received.each do |request| %>
-    <section id="request_<%=request.id%>">
-      <a href="/requests/<%= request.id %>"><%= request.space.name %></a><br>
-      <%= get_request_status(request.confirmed) %><br>
-      <%= request.date %>
-      <% if unconfirmed?(request) %>
-        <form action="/requests/<%= request.id %>" method="POST">
-          <input type='hidden' name='_method' value='put'>
-          <input type="submit" value="Approve">
-        </form>
-      <% end %>
-    </section>
-  <% end %>
+  </div>
 </div>

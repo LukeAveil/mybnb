@@ -48,7 +48,7 @@ feature 'Date handling' do
     click_button "Sign out"
     signin
     visit '/requests'
-    within 'section#request_2' do
+    within '#request_2' do
       click_button 'Approve'
     end
     expect(Request.first.confirmed).to eq 1

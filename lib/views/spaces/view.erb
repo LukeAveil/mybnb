@@ -53,8 +53,8 @@
     <div id="calendar_date_box">
       <form action="/requests" method="post">
         <input type='hidden' name='space_id' value='<%= params[:id] %>'>
-        <input type="date" id="requested_date" name="requested_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>">
-        <input type="submit" value="confirm request">
+        <input type="date" id="requested_date" name="requested_date" min="<%= @date_list.first %>" max="<%= @date_list.last %>" value="<%= @date_list.first %>" class="whiteBox">
+        <input type="submit" value="confirm request" class="addAvailButton">
       </form>
     </div>
 
