@@ -1,7 +1,7 @@
 feature "Booking a space" do
 	scenario "User confirms request" do
 		signup
-		listSpace
+		list_space
 		click_button "Sign out"
 		signup(email: "jeff@jeff.com")
 		click_link "view space"

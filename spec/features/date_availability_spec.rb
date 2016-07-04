@@ -2,7 +2,7 @@ feature 'Date handling' do
 
   scenario 'User can specify available dates' do
     signup
-    listSpace
+    list_space
     expect(current_path).to eq '/spaces'
     space = Space.last
     first_date = Date.parse('2016-07-10')
@@ -13,7 +13,7 @@ feature 'Date handling' do
 
   scenario 'User can add additional available dates' do
     signup
-    listSpace
+    list_space
     click_link 'view space'
     fill_in 'date', with: '2016-07-19'
     click_button('add availability')
@@ -24,7 +24,7 @@ feature 'Date handling' do
 
   scenario 'Only a spaces owner can add available dates' do
     signup
-    listSpace
+    list_space
     click_button('Sign out')
     signup(email: 'jeff@jeff.com')
     click_link 'view space'
@@ -32,13 +32,13 @@ feature 'Date handling' do
   end
 
   scenario 'upon booking, booking date removed from available dates' do
-    makeRequest
+    make_request
     click_button "Approve"
     expect(Space.first.available_dates.map{|av_date| av_date.date}).not_to include Date.parse('2016-07-14')
   end
 
   scenario 'upon approval, other requests for that space and date are rejected' do
-    makeRequest
+    make_request
     click_button "Sign out"
     signup(email: 'jeff@jeff.com')
     visit '/spaces'
@@ -55,7 +55,7 @@ feature 'Date handling' do
   end
 
   scenario 'User cannot add a date that has been confirmed' do
-    makeRequest
+    make_request
     click_button 'Approve'
     expect(Space.last.available_dates.length).to eq(8)
     visit '/spaces'

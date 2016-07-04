@@ -1,7 +1,7 @@
 feature 'Users can have a conversation about a booking' do
 
   scenario 'Space owner can send a message' do
-    makeRequest
+    make_request
     click_button "Approve"
     visit '/requests'
     click_link "Luke's place"
@@ -11,7 +11,7 @@ feature 'Users can have a conversation about a booking' do
   end
 
   scenario 'Space renter can send a message' do
-    makeRequest
+    make_request
     click_button "Approve"
     click_button "Sign out"
     signin(email: 'ken@ken.com')
