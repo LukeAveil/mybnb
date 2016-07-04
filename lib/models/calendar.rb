@@ -16,4 +16,5 @@ class Calendar
     date_list = self.days_for_next_year
     date_list - array
   end
+  
 end

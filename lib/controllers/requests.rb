@@ -10,12 +10,15 @@ class MakersBnB < Sinatra::Base
 
   post '/requests' do
     @space = Space.first(id: params[:space_id])
-    if Request.date_valid(@space.available_dates, Date.parse(params[:requested_date]))
+    requested_date = Date.parse(params[:requested_date])
+
+    if Request.valid_date?(@space.available_dates, requested_date)
       request = Request.create(user: @user,
                                space: @space,
                                confirmed: 0,
                                date: Date.parse(params[:requested_date]))
     end
+    
     redirect '/requests'
   end
 

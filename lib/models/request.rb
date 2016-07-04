@@ -17,8 +17,8 @@ class Request
     self.update(confirmed: 2)
   end
 
-  def self.date_valid(available_dates, requested_date)
-     available_dates.map{|av_date| av_date.date}.include?(requested_date)
+  def self.valid_date?(available_dates, requested_date)
+    available_dates.map { |available| available.date }.include?(requested_date)
   end
 
   def self.unconfirmed_requests_for?(space)
@@ -39,6 +39,8 @@ class Request
   end
 
   def self.date_not_already_booked(space, date)
-    return Request.all(space: space, date: Date.parse(date), confirmed: 2).empty?
+    requests = Request.all(space: space, date: Date.parse(date), confirmed: 2)
+    return requests.empty?
   end
+
 end
