@@ -4,7 +4,7 @@ feature 'List a space' do
 
   scenario 'User can list a space' do
       signup
-      listSpace
+      list_space
       expect(current_path).to eq '/spaces'
 
       within 'ul#spaces' do
@@ -14,7 +14,7 @@ feature 'List a space' do
 
   scenario 'User can upload an image' do
     signup
-    listSpace
+    list_space
     space = Space.last
     expect(space.photo).to eq "croc2.jpg"
     visit "spaces/#{space.id}"

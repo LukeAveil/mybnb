@@ -20,8 +20,8 @@ def signin(email: "joe@joemail.com",
   end
 end
 
-def listSpace
-  visit '/listSpace'
+def list_space
+  visit '/list_space'
   fill_in 'name', with: "Luke's place"
   fill_in 'description', with: 'Nice place in Shoreditch'
   fill_in 'price', with: '200'
@@ -31,9 +31,9 @@ def listSpace
   click_button('List space')
 end
 
-def makeRequest
+def make_request
   signup
-  listSpace
+  list_space
   click_button 'Sign out'
   signup(email: 'ken@ken.com')
   visit '/spaces'
@@ -45,10 +45,10 @@ def makeRequest
   visit '/requests'
 end
 
-def listanotherSpace
+def list_another_space
   click_button('Sign out')
   signup(email: 'ken@ken.com')
-  visit '/listSpace'
+  visit '/list_space'
   fill_in 'name', with: "Ken's place"
   fill_in 'description', with: 'Nice place in Holborn'
   fill_in 'price', with: '150'

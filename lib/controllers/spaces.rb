@@ -18,7 +18,7 @@ class MakersBnB < Sinatra::Base
   end
 
 
-  get '/listSpace' do
+  get '/list_space' do
     @min_date = Date.today
     @max_date = Date.today + 365
     erb :'spaces/new'
