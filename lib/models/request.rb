@@ -18,7 +18,7 @@ class Request
   end
 
   def self.valid_date?(available_dates, requested_date)
-    available_dates.map { |available_date| available_date.date }.include?(requested_date)
+    available_dates.map { |available| available.date }.include?(requested_date)
   end
 
   def self.unconfirmed_requests_for?(space)
