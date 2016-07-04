@@ -17,15 +17,17 @@ class Space
   has n, :available_dates, through: Resource
 
   def confirm_booking_on(date)
-    self.available_dates = self.available_dates.select do |av_date|
-      av_date.date != date
+    self.available_dates = self.available_dates.select do |available|
+      available.date != date
     end
 
     self.save
   end
 
   def in_range?(from, to)
-    available_dates.any? { |dateObj| (dateObj.date >= from && dateObj.date <= to) }
+    available_dates.any? do |available|
+      (available.date >= from && available.date <= to)
+    end
   end
 
   def self.upload_photo(filename, file_contents)
@@ -33,18 +35,30 @@ class Space
       f.write(file_contents.read)
     end
 
-    image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
-    image.resize "200x200"
-    image.write "./lib/public/image_uploads/small_#{filename}"
+    path = "./lib/public/image_uploads/"
 
-    image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
-    image.resize "500x500"
-    image.write "./lib/public/image_uploads/#{filename}"
+    self.image_resize(path: path,
+                 prefix: "small_",
+                 filename: filename,
+                 size: "200x200")
 
-    image = MiniMagick::Image.open("./lib/public/image_uploads/#{filename}")
-    image.resize "128x128"
-    image.write "./lib/public/image_uploads/stripe_#{filename}"
+    self.image_resize(path: path,
+                 filename: filename,
+                 size: "500x500")
 
+    self.image_resize(path: path,
+                 prefix: "stripe_",
+                 filename: filename,
+                 size: "128x128")
+  end
+
+  private
+
+  def self.image_resize(params)
+    prefix = params.fetch(:prefix, "")
+    image = MiniMagick::Image.open(params[:path] + params[:filename])
+    image.resize(params[:size])
+    image.write(params[:path] + prefix + params[:filename])
   end
 
 end
