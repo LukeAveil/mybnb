@@ -1,6 +1,6 @@
 ###First group project at Makers Academy, make a clone of Airbnb!
 
-```
+
 ### User Stories
 
 ```
