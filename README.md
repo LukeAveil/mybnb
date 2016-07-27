@@ -1,3 +1,6 @@
+###First group project at Makers Academy, make a clone of Airbnb!
+
+```
 ### User Stories
 
 ```
@@ -11,7 +14,7 @@ I would like to list a space
 
 As a signed up user
 so that i can use the site
-I would like to log in 
+I would like to log in
 
 As a user
 so that I can list all my spaces
